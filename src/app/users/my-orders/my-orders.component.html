@@ -1,0 +1,28 @@
+<app-bs-navbar></app-bs-navbar>
+<h1>Orders</h1>
+<div class="container" *ngFor="let order of orderDetails">
+    <p class="cust-name">Customer Name : {{order.shipping.Name}}</p>
+    <div class="row order-box" *ngFor="let item of order.items">
+        <div class="col-6"> 
+            <div class="row">
+            <div class="col-3">
+              <img src="{{ item.product.ImageUrl }}" />
+            </div>
+            <div class="col-8 name">
+              <span>{{ item.product.Name }}</span>
+              <br />
+              <span class="desc">Qty: {{ item.quantity }}</span
+              ><br />
+              <span class="desc"
+                >Price: {{ item.product.Price | currency: "INR" }}</span
+              >
+            </div>
+          </div></div>
+        <div class="col-2 item-price">{{ item.price | currency: "INR" }}</div>
+        <div class="col-4">
+            <span>Ordered on: {{order.datePlaced | date}}</span>
+            <br>
+            <span>Delivered at : {{order.shipping.Address.AddLine1}} {{order.shipping.Address.AddLine2}} , {{order.shipping.City}}</span>
+        </div>
+    </div>
+</div>

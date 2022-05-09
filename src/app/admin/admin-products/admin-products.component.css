@@ -1,0 +1,43 @@
+.empty{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.edit {
+    color: darkgreen;
+    cursor: pointer;
+}
+.del {
+    color: red;
+    cursor: pointer;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-box {
+    margin: 0 40px;
+  }
+  
+  .add-button {
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 12px 27px;
+    background-color: #0e292b;
+    color: #fff;
+    border-radius: 10px;
+    border: 1px solid #0e292b;
+  }
+  
+  .add-button:hover{
+      background-color: transparent;
+      color: #0e292b;
+  }
+  
+  .price{
+      font-weight: 500 ;
+  }

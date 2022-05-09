@@ -1,0 +1,61 @@
+.price{
+    float: right;
+    font-size: medium;
+    font-weight: 500;
+}
+
+.total-price{
+    font-weight: bold;
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+form{
+    margin-right: 20px;
+}
+
+.form-control {
+    margin-bottom: 15px
+}
+
+.form-label{
+    font-size: large;
+    font-weight: 500;
+}
+
+.details{
+    margin-top: 30px;
+}
+
+.card-text{
+    font-size: large;
+    font-weight: 500;
+}
+
+.list-group-item col{
+    display: inline;
+}
+
+.price-detail{
+    margin-bottom: 20px;
+}
+
+.place-order {
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 12px 27px;
+  background-color: #0e292b;
+  color: #fff;
+  border-radius: 0px;
+  border: 1px solid #0e292b;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+.place-order:hover {
+  background-color: transparent;
+  color: #0e292b;
+}

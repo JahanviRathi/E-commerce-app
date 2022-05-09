@@ -1,0 +1,87 @@
+<div class="container">
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <h3>Register</h3>
+
+    <div class="row mb-4" formGroupName="username">
+      <div class="col">
+        <label class="form-label" for="firstname">First name</label>
+        <input
+          type="text"
+          id="firstname"
+          class="form-control"
+          formControlName="firstName"
+          autocomplete="off"
+          [class.is-invalid]="
+          registerForm.get('username.firstName').invalid && registerForm.get('username.firstName').touched
+        "
+      />
+      </div>
+      <div class="col">
+        <label class="form-label" for="lastname">Last name</label>
+        <input
+          type="text"
+          id="lastname"
+          class="form-control"
+          formControlName="lastName"
+          autocomplete="off"
+        />
+      </div>
+      <span
+        class="text-danger"
+        *ngIf="registerForm.get('username.firstName').invalid && registerForm.get('username.firstName').touched"
+        >First Name is required!</span
+      >
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label" for="email">Email address</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        formControlName="email"
+        autocomplete="off"
+        [class.is-invalid]="
+        registerForm.get('email').invalid && registerForm.get('email').touched
+      "
+    />
+    <span
+      class="text-danger"
+      *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched"
+      >Please enter valid email!</span
+    >
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label" for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        formControlName="password"
+        autocomplete="off"
+        [class.is-invalid]="
+        registerForm.get('password').invalid && registerForm.get('password').touched
+      "
+      />
+      <span
+      class="text-danger"
+      *ngIf="
+        registerForm.get('password').invalid && registerForm.get('password').touched
+      "
+    >
+      <span
+        class="text-danger"
+        *ngIf="registerForm.get('password').errors.minlength"
+        >Password length should be greater then 6!</span
+      >
+      <span
+        class="text-danger"
+        *ngIf="registerForm.get('password').errors.required"
+        >Password is required!</span
+      >
+    </span>
+    </div>
+    <button type="submit" class="logButton">Sign up</button>
+  </form>
+</div>

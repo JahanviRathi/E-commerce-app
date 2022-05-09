@@ -1,0 +1,40 @@
+h1,h5{
+    text-align: center;
+}
+
+.empty{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.wishlist{
+    margin-left: 40px;
+}
+
+.wishlistCard{
+    margin-left: 40px;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.del{
+    display: flex;
+    justify-content: right;
+    margin-bottom: 10px;
+}
+
+.add-wishlist-btn {
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 12px 27px;
+  background-color: #0e292b;
+  color: #fff;
+  border-radius: 0px;
+  border: 1px solid #0e292b;
+}
+
+.add-wishlist-btn:hover {
+  background-color: transparent;
+  color: #0e292b;
+}

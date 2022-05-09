@@ -1,0 +1,134 @@
+<app-bs-navbar></app-bs-navbar>
+
+  <h1 class="heading">{{text}} Product</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+        <div class="form-group">
+          <label for="name">Product Name:</label>
+          <input
+            id="name"
+            class="form-control"
+            type="text"
+            formControlName="Name"
+        
+            [class.is-invalid]="
+              productForm.get('Name').invalid && productForm.get('Name').touched
+            "
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              productForm.get('Name').invalid && productForm.get('Name').touched
+            "
+          >
+            Name is required
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="desc">Description:</label>
+            <input
+              id="desc"
+              class="form-control"
+              type="text"
+              formControlName="Description"
+  
+            />
+          </div>
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <select
+            id="category"
+            class="form-control"
+            formControlName="Category"
+        
+            [class.is-invalid]="
+              productForm.get('Category').invalid &&
+              productForm.get('Category').touched
+            "
+          >
+            <option *ngFor="let c of categories" [value]="c.Name">
+              {{ c.Name }}
+            </option>
+          </select>
+          <div
+            class="text-danger"
+            *ngIf="
+              productForm.get('Category').invalid &&
+              productForm.get('Category').touched
+            "
+          >
+            Category is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="sub-category">Sub-Category :</label>
+          <input
+            id="sub-category"
+            class="form-control"
+            type="text"
+            formControlName="SubCategory"
+         
+          />
+        </div>
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">&#8377;</span>
+            </div>
+            <input
+              id="price"
+              class="form-control"
+              type="number"
+              formControlName="Price"
+              
+              [class.is-invalid]="
+                (productForm.get('Price').invalid &&
+                  productForm.get('Price').touched) ||
+                productForm.get('Price').value < 0
+              "
+            />
+          </div>
+          <div
+            class="text-danger"
+            *ngIf="
+              productForm.get('Price').invalid &&
+              productForm.get('Price').touched
+            "
+          >
+            Price is required
+          </div>
+          <div class="text-danger" *ngIf="productForm.get('Price').value < 0">
+            Price should be 0 or higher
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="imageUrl">Image Url:</label>
+          <input
+            id="imageUrl"
+            class="form-control"
+            type="text"
+            formControlName="ImageUrl"
+   
+          />
+        </div>
+        <button
+          type="submit"
+          [disabled]="productForm.invalid || productForm.get('Price').value < 0"
+          class="action-button"
+        >
+          {{text}}
+        </button>
+        <span
+          class="action-button cancel"
+          routerLink="/admin/products"
+        >
+          Cancel
+      </span>
+      </form>
+    </div>
+    <div class="col-md-6">
+ <app-product-card [product]="productForm.value" [showActions]="false" ></app-product-card>
+    </div>
+  </div>

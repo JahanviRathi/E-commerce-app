@@ -1,0 +1,115 @@
+<nav
+  class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark"
+  aria-label="Main navigation"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/" routerLinkActive="active"
+      ><i class="fas fa-shopping-bag"></i> Desi Halt</a
+    >
+    <button
+      (click)="isMenuCollapsed = !isMenuCollapsed"
+      class="navbar-toggler p-0 border-0"
+      type="button"
+      id="navbarSideCollapse"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="navbar-collapse offcanvas-collapse"
+      [ngbCollapse]="isMenuCollapsed"
+      id="navbarsExampleDefault"
+    >
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+        <li ngbDropdown *ngIf="user" class="nav-item dropdown">
+          <a
+            ngbDropdownToggle
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            >{{ user.displayName }}</a
+          >
+          <ul
+            ngbDropdownMenu
+            class="dropdown-menu"
+            role="menu"
+            aria-labelledby="dLabel"
+          >
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="/products"
+              (click)="isMenuCollapsed = true"
+              >All Products</a
+            >
+          </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/my/orders"
+                *ngIf="!isAdmin"
+                (click)="isMenuCollapsed = true"
+                >My Orders</a
+              >
+            </li>
+            <ng-container *ngIf="isAdmin">
+              <li>
+                <a
+                  class="dropdown-item"
+                  routerLink="/admin/orders"
+                  (click)="isMenuCollapsed = true"
+                  >Manage Orders</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  routerLink="/admin/products"
+                  (click)="isMenuCollapsed = true"
+                  >Manage Products</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  routerLink="/admin/categories"
+                  (click)="isMenuCollapsed = true"
+                  >Manage Categories</a
+                >
+              </li>
+            </ng-container>
+            <li><a class="dropdown-item" (click)="logout()">Log Out</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/wishlist"
+            (click)="isMenuCollapsed = true"
+            ><i class="fas fa-heart"></i
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/shopping-cart"
+            (click)="isMenuCollapsed = true"
+            ><i class="fas fa-shopping-cart">
+              <span *ngIf="totalQuantity != 0" class="badge badge-pill badge-dark">{{
+                totalQuantity
+              }}</span>
+            </i>
+          </a>
+        </li>
+        <li *ngIf="!user" class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/login"
+            (click)="isMenuCollapsed = true"
+            ><i class="fa-solid fa-right-to-bracket"></i
+          ></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,32 @@
+<app-bs-navbar></app-bs-navbar>
+
+<h1>WishList</h1>
+<ng-template #empty>
+  <div class="empty">
+    <h5>WishList is Empty!!</h5>
+  </div>
+  <div class="empty">
+    <button class="add-wishlist-btn" routerLink="/products">Go to Products</button>
+  </div>
+</ng-template>
+<h5 *ngIf="wishlistItems != 0; else empty">
+  You have {{ wishlistItems }} {{ msg }} in your cart.
+</h5>
+<div class="col" >
+  <div class="row wishlist">
+    <ng-container  *ngFor="let item of items; let i = index">
+      <div class="col-md-3 wishlistCard">
+        <div class="del">
+          <button class="btn btn-danger del" (click)="removeFromWishlist(item)">
+            <i class="fa-solid fa-circle-minus"></i>
+          </button>
+        </div>
+        <app-product-card
+          [product]="item.product"
+          [showActions]="true"
+        ></app-product-card>
+      </div>
+    </ng-container>
+  </div>
+</div>
+

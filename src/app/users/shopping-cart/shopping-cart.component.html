@@ -1,0 +1,53 @@
+<app-bs-navbar></app-bs-navbar>
+
+<ng-template #empty>
+    <div class="empty">
+    <h5>Cart is Empty!!</h5>
+  </div>
+  <div class="empty">
+    <button class="cart-add-btn" routerLink="/products">Go to Products</button>
+  </div>
+</ng-template>
+
+<ng-container *ngIf="totalQuantity != 0; else empty">
+<div class="cart-container">
+    <h3 class="cart-heading">Your Bag</h3>
+    <h5>
+      You have {{ totalQuantity }} {{ totalQuantityMsg }} in your cart.
+      <button class="btn btn-danger btn-sm clr" (click)="clearCart()">
+        Clear Cart
+      </button>
+    </h5>
+</div>
+<div class="cart-items" *ngFor="let cartItem of cartItems">
+  <div class="cart-image-box">
+    <img src="{{ cartItem.product.ImageUrl }}" />
+  </div>
+  <div class="cart-about">
+    <h1 class="cart-title">{{ cartItem.product.Name }}</h1>
+    <p class="cart-description">{{ cartItem.product.Description }}</p>
+  </div>
+  <div class="cart-quantity">
+    <h6 class="cart-quantity-heading">Qty. in cart : {{ cartItem.quantity }}</h6>
+    <h6 class="cart-quantity-heading">Price : {{ cartItem.product.Price | currency:"INR" }}</h6>
+  </div>
+  <div class="cart-prices">
+    <div class="cart-amount">
+      {{ cartItem.quantity * cartItem.product.Price | currency: "INR" }}
+    </div>
+    <div class="button-box">
+      <button class="cart-remove" (click)="removeFromCart(cartItem.product)">Remove from Bag</button>
+    </div>
+  </div>
+</div>
+<div class="cart-checkout">
+  <div class="cart-total">
+    <div>
+      <div class="cart-subtotal">Sub-Total</div>
+      <div class="items">{{ totalQuantity }} {{totalQuantityMsg}}</div>
+    </div>
+    <div class="cart-total-amount">{{ totalPrice | currency: "INR" }}</div>
+  </div>
+  <button class="cart-checkout-btn" routerLink="/check-out">Check Out</button>
+</div>
+</ng-container>

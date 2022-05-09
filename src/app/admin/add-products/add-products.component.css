@@ -1,0 +1,41 @@
+.heading{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.empty{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-group{
+    width: 500px;
+    margin-bottom: 12px;
+}
+
+.action-button {
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 12px 27px;
+    background-color: #0e292b;
+    color: #fff;
+    border-radius: 10px;
+    border: 1px solid #0e292b;
+    cursor: pointer;
+  }
+  
+  .action-button:hover{
+      background-color: transparent;
+      color: #0e292b;
+  }
+
+  .cancel{
+      margin-left: 35px;
+      background-color: red;
+      border: 1px solid red;
+  }
+
+  .cancel:hover{
+      color: red;
+  }

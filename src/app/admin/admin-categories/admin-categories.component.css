@@ -1,0 +1,66 @@
+.del {
+    color: red;
+    cursor: pointer;
+}
+
+.tableDataDel{
+    width: 50px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.add-button{
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 12px 27px;
+    background-color: #0e292b;
+    color: #fff;
+    border-radius: 10px;
+    border: 1px solid #0e292b;
+    cursor: pointer;
+    margin-left: 130px;
+    margin-bottom: 30px;
+  }
+  
+.input-add-button{
+    display: inline-block;
+    padding: 12px 27px;
+    background-color: #0e292b;
+    color: #fff;
+    border-radius: 10px;
+    border: 1px solid #0e292b;
+    margin-left: 30px;
+}
+
+  .add-button:hover,
+  .input-add-button:hover{
+      background-color: transparent;
+      color: #0e292b;
+  }
+
+.form{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+  .input-group{
+      width: 80%;
+      text-align: center;
+  }
+
+  .form-label{
+      margin-left: 130px;
+      font-size: large;
+      font-weight: 600;
+  }

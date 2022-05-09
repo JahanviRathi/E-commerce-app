@@ -1,0 +1,22 @@
+.empty{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.product{
+    margin-top: 30px;
+}
+
+.sort{
+    display: flex;
+    justify-content: right;
+}
+
+i{
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.numeric {
+    margin-left: 20px;
+}

@@ -1,0 +1,43 @@
+<app-bs-navbar></app-bs-navbar>
+<div class="container">
+  <div class="row">
+    <div class="search col-6">
+      <input
+        type="text"
+        class="form-control searchInput"
+        placeholder="Search..."
+        #query
+        (keyup)="filter(query.value)"
+      />
+    </div>
+    <div class="col-6 sort">
+      <div class="alpha">
+        <i class="fa-solid fa-arrow-down-a-z" (click)="sort('alpha', 1)"></i>
+        <i class="fa-solid fa-arrow-up-a-z" (click)="sort('alpha' , -1)"></i>
+      </div>
+      <div class="numeric">
+        <i class="fa-solid fa-arrow-down-1-9" (click)="sort('num' , 1)"></i>
+        <i class="fa-solid fa-arrow-up-1-9" (click)="sort('num' , -1)"></i>
+      </div>
+    </div>
+  </div>
+  <div class="row product">
+      <div class="col-3">
+        <app-product-filter [selectedCategory]="selectedCategory"></app-product-filter>
+      </div>
+      <div class="col" >
+        <ng-template #empty>
+          <h3>No Products to display</h3>
+        </ng-template>
+        <div class="row" *ngIf="products.length; else empty">
+          <ng-container *ngFor="let product of products; let i = index">
+            <div class="col">
+              <app-product-card [product]="product" [showActions]="true"></app-product-card>
+            </div>
+            <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    
+</div>

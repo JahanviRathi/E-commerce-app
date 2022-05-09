@@ -1,0 +1,65 @@
+<app-bs-navbar></app-bs-navbar>
+
+<div class="product-box" >
+  <p>
+    <a
+      routerLink="/admin/products/new"
+      routerLinkActive="active"
+      class="add-button"
+      >Add Product</a
+    >
+  </p>
+
+  <ng-template #empty >
+    <h3 class="empty">No Products to display</h3>
+  </ng-template>
+  
+  <div *ngIf="this.products.length; else empty;">
+    <div class="search">
+      <input
+        type="text"
+        class="form-control searchInput"
+        placeholder="Search..."
+        #query
+        (keyup)="filter(query.value)"
+      />
+    </div>
+  
+    <table class="table" >
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let p of products | slice: (page - 1) * pageSize:page * pageSize"
+        >
+          <td>{{ p.Name }}</td>
+          <td class="price">{{ p.Price | currency: "INR" }}</td>
+          <td>
+            <a [routerLink]="['/admin/products/', p.id]" class="edit"
+              ><i class="fas fa-edit"></i
+            ></a>
+          </td>
+          <td>
+            <a (click)="delProduct(p)" class="del"><i class="fas fa-trash"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="container">
+      <ngb-pagination
+        [(page)]="page"
+        [pageSize]="pageSize"
+        [collectionSize]="products.length"
+      >
+      </ngb-pagination>
+    </div>
+  </div>
+ 
+</div>
+

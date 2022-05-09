@@ -1,0 +1,57 @@
+<app-bs-navbar></app-bs-navbar>
+<div class="category-box" >
+  <div>
+    <a class="add-button" (click)="addCat = !addCat">Add Category</a>
+  </div>
+  <div *ngIf="addCat">
+    <label class="form-label" for="category">Category Name</label>
+    <div class="form">
+      <div class="input-group">
+        <input type="text" id="category" class="form-control" #category />
+        <div class="input-group-append">
+          <button
+            class="input-add-button"
+            (click)="addCategory(category.value)"
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container tableData">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let category of categories
+              | slice: (page - 1) * pageSize:page * pageSize
+          "
+        >
+          <td>{{ category.Name }}</td>
+          <td class="tableDataDel">
+            <a (click)="delCategory(category)" class="del"
+              ><i class="fas fa-trash"></i
+            ></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container">
+    <ngb-pagination
+      [(page)]="page"
+      [pageSize]="pageSize"
+      [collectionSize]="categories.length"
+    >
+    </ngb-pagination>
+  </div>
+</div>

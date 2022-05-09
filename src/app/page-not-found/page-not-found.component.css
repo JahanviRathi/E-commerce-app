@@ -1,0 +1,15 @@
+.col{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h3, h5{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn{
+    margin-top: 20px;
+    width: 20%;
+}

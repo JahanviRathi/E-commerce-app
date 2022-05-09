@@ -1,0 +1,203 @@
+<app-bs-navbar></app-bs-navbar>
+
+<div class="container">
+  <h1>Shipping</h1>
+  <div class="row">
+    <div class="col-6">
+      <form [formGroup]="shippingForm" (ngSubmit)="placeOrder()">
+        <div class="form-group">
+          <label for="name" class="form-label">Name</label>
+          <input
+            id="name"
+            class="form-control"
+            type="text"
+            formControlName="Name"
+            autocomplete="off"
+            [class.is-invalid]="
+              shippingForm.get('Name').invalid &&
+              shippingForm.get('Name').touched
+            "
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              shippingForm.get('Name').invalid &&
+              shippingForm.get('Name').touched
+            "
+          >
+          <div
+          class="text-danger"
+          *ngIf="shippingForm.get('Name').errors.required"
+        >
+          Name is required
+        </div>
+        <div
+          class="text-danger"
+          *ngIf="shippingForm.get('Name').errors.pattern"
+        >
+          Name should be in alphabets
+        </div>
+          </div>
+        </div>
+        <div formGroupName="Address">
+          <label class="form-label">Address</label>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="AddLine1"
+              autocomplete="off"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="AddLine2"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="city">City</label>
+          <input
+            id="city"
+            class="form-control"
+            type="text"
+            formControlName="City"
+            autocomplete="off"
+            [class.is-invalid]="
+              shippingForm.get('City').invalid &&
+              shippingForm.get('City').touched
+            "
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              shippingForm.get('City').invalid &&
+              shippingForm.get('City').touched
+            "
+          >
+          <div
+          class="text-danger"
+          *ngIf="shippingForm.get('City').errors.required"
+        >
+          City is required
+        </div>
+        <div
+          class="text-danger"
+          *ngIf="shippingForm.get('City').errors.pattern"
+        >
+          City should be in alphabets
+        </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="state">State</label>
+          <input
+            id="state"
+            class="form-control"
+            type="text"
+            formControlName="State"
+            autocomplete="off"
+            [class.is-invalid]="
+              shippingForm.get('State').invalid &&
+              shippingForm.get('State').touched
+            "
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              shippingForm.get('State').invalid &&
+              shippingForm.get('State').touched
+            "
+          >
+            <div
+              class="text-danger"
+              *ngIf="shippingForm.get('State').errors.required"
+            >
+              State is required
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="shippingForm.get('State').errors.pattern"
+            >
+              State should be in alphabets
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="pincode">Pincode</label>
+          <input
+            id="pincode"
+            class="form-control"
+            type="text"
+            formControlName="Pincode"
+            autocomplete="off"
+            [class.is-invalid]="
+              shippingForm.get('Pincode').invalid &&
+              shippingForm.get('Pincode').touched
+            "
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              shippingForm.get('Pincode').invalid &&
+              shippingForm.get('Pincode').touched
+            "
+          >
+            <div
+              class="text-danger"
+              *ngIf="shippingForm.get('Pincode').errors.required"
+            >
+              Pincode is required
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="shippingForm.get('Pincode').errors.pattern"
+            >
+              Pincode should be numeric
+            </div>
+          </div>
+        </div>
+        <button
+          type="submit"
+          [disabled]="shippingForm.invalid || totalQuantity === 0"
+          class="place-order"
+        >
+          Place Order
+        </button>
+      </form>
+    </div>
+    <div class="col-6 details">
+      <ng-template #empty>
+        <h2>Your cart is empty</h2>
+      </ng-template>
+      <div class="card" *ngIf="totalQuantity != 0; else empty">
+        <div class="card-body">
+          <h4 class="card-title">Order Summary</h4>
+          <p class="card-text">
+            You have {{ totalQuantity }} {{ totalQuantityMsg }} in your shopping
+            cart.
+          </p>
+          <ul class="list-group list-group-flush row">
+            <li class="list-group-item" *ngFor="let item of order.items">
+              <div class="col price-detail">
+                {{ item.quantity }} x {{ item.product.Name }}
+                <div class="col price">
+                  {{ item.price | currency: "INR" }}
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item total-price">
+              Total
+              <div class="price">
+                {{ totalPrice | currency: "INR" }}
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

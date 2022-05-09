@@ -1,0 +1,255 @@
+.container{
+    width: 100%;
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.row{
+    width: 100%;
+    justify-content: space-between;
+}
+
+.col{
+    position: sticky;
+    text-align: center;
+    flex-direction: row;
+    color: #212121;
+    cursor: pointer;
+}
+
+.img{
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+    margin: auto;
+}
+
+.text{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.img-wrapper{
+    object-fit: fill;
+}
+
+.carousel-image {
+    position: absolute;
+    margin: auto;
+}
+
+.slider{
+    height:200px !important;
+}
+
+.item-carousel{
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.carousel-inner{
+    object-fit: contain;
+}
+
+#Indicators{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.rec-top{
+    margin-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%);
+}
+
+.rec-text{
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.rec-text h2{
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 500;
+}
+
+.rec-items{
+    width: 1770px;
+    border: 0px;
+}
+
+.rec-card{
+    width: 220px;
+}
+
+.card-img-top {
+    width:100%;
+    height: 100px;
+    object-fit: contain;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+.wishlist{
+    position: absolute;
+    display: inline-block;
+    top: 12px;
+    z-index: 12;
+    right: 12px;
+    cursor: pointer;
+    font-size: x-large;
+}
+
+.wishlist i {
+    color: #000;
+    opacity: .2;
+    stroke: transparent;
+}
+
+.card-body{
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+}
+
+.card-body span{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.card-body p{
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.info-container {
+    background-color: #191e1f;
+    margin-top: 30px;
+    color: #fff;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    height: 500px;
+  }
+  
+  .info-container .contact-nav {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 25px 0;
+    text-align: center;
+  }
+  
+  .info-container .contact-nav div {
+    flex: 1;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+  }
+  
+  .info-container .contact-nav div i {
+    font-size: 28px;
+  }
+  
+  .info-container .info-top {
+    padding: 45px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .info-container h4 {
+    text-transform: uppercase;
+    position: relative;
+    margin-bottom: 25px;
+    font-size: 22px;
+  }
+  
+  .info-container .info-links .info-links-menu {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+  }
+  
+  .info-container .info-links .info-links-menu a {
+    color: #fff;
+  }
+  
+  .info-container .contact-nav div:hover,
+  .info-container .info-links .info-links-menu a:hover,
+  .info-container .info-links .info-links_menu a.active {
+    color: #f89646;
+    cursor: pointer;
+  }
+  
+  .info-container .info-form input {
+    width: 100%;
+    font-size: 18px;
+    border: none;
+    height: 45px;
+    margin-bottom: 15px;
+    padding-left: 25px;
+    background-color: #eaeaea;
+    outline: none;
+    color: #101010;
+  }
+  
+  .info-container .info-form .newsletter-btn {
+    display: inline-block;
+    font-size: 18px;
+    padding: 10px 45px;
+    background-color: #6bb7be;
+    color: #fff;
+    border-radius: 0px;
+    border: 1px solid #6bb7be;
+    transition: all 0.2s;
+  }
+  
+  .info-container .info-form .newsletter-btn:hover {
+    background-color: transparent;
+    color: #6bb7be;
+  }
+  
+  .info-container .social-box {
+    width: 100%;
+    display: flex;
+    margin-top: 25px;
+    text-align: center;
+    justify-content: space-evenly;
+  }
+  
+  .info-container .social-box a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 45px;
+    height: 45px;
+    border: 1px solid #6bb7be;
+    color: #6bb7be;
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  
+  .info-container .social-box a:hover {
+    color: #f89646;
+    border-color: #f89646;
+  }
+  
+  .contact-nav .contact-nav-icon {
+    margin-right: 15px;
+  }
+  
+  .social-box a{
+      text-decoration: none;
+  }
+
+  a{
+    text-decoration: none;
+  }

@@ -1,0 +1,49 @@
+h1{
+    text-align: center;
+}
+.cust-name{
+    font-weight: 500;
+    font-size: large;
+    margin: 20px 0;
+}
+
+img{
+    height: 75px;
+    width: 75px;
+    object-fit: contain;
+}
+
+.order-box{
+    padding: 16px;
+    width: 100%;
+    overflow: hidden;
+    transition: box-shadow .1s linear;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    position: relative;
+    box-shadow: 0 0 0 0 rgb(0 0 0 / 15%);
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+.name{
+    color: #212121;
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 20px;
+}
+
+.desc{
+    font-size: 14px;
+    color: #757988
+}
+
+.item-price{
+    font-weight: bold;
+}
+
+.col-4{
+    color:#212121;
+    font-size: 14px;
+    font-weight:400
+}
