@@ -4,7 +4,7 @@
   <h1>Shipping</h1>
   <div class="row">
     <div class="col-6">
-      <form [formGroup]="shippingForm" (ngSubmit)="placeOrder()">
+      <form [formGroup]="shippingForm" (ngSubmit)="makePayment()">
         <div class="form-group">
           <label for="name" class="form-label">Name</label>
           <input
@@ -25,18 +25,18 @@
               shippingForm.get('Name').touched
             "
           >
-          <div
-          class="text-danger"
-          *ngIf="shippingForm.get('Name').errors.required"
-        >
-          Name is required
-        </div>
-        <div
-          class="text-danger"
-          *ngIf="shippingForm.get('Name').errors.pattern"
-        >
-          Name should be in alphabets
-        </div>
+            <div
+              class="text-danger"
+              *ngIf="shippingForm.get('Name').errors.required"
+            >
+              Name is required
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="shippingForm.get('Name').errors.pattern"
+            >
+              Name should be in alphabets
+            </div>
           </div>
         </div>
         <div formGroupName="Address">
@@ -78,18 +78,18 @@
               shippingForm.get('City').touched
             "
           >
-          <div
-          class="text-danger"
-          *ngIf="shippingForm.get('City').errors.required"
-        >
-          City is required
-        </div>
-        <div
-          class="text-danger"
-          *ngIf="shippingForm.get('City').errors.pattern"
-        >
-          City should be in alphabets
-        </div>
+            <div
+              class="text-danger"
+              *ngIf="shippingForm.get('City').errors.required"
+            >
+              City is required
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="shippingForm.get('City').errors.pattern"
+            >
+              City should be in alphabets
+            </div>
           </div>
         </div>
         <div class="form-group">
@@ -165,7 +165,7 @@
           [disabled]="shippingForm.invalid || totalQuantity === 0"
           class="place-order"
         >
-          Place Order
+          Pay {{totalPrice | currency: "INR"}}
         </button>
       </form>
     </div>
@@ -185,14 +185,14 @@
               <div class="col price-detail">
                 {{ item.quantity }} x {{ item.product.Name }}
                 <div class="col price">
-                  {{ item.price | currency: "INR" }}
+                  {{ item.price | currency : "INR" }}
                 </div>
               </div>
             </li>
             <li class="list-group-item total-price">
               Total
               <div class="price">
-                {{ totalPrice | currency: "INR" }}
+                {{ totalPrice | currency : "INR" }}
               </div>
             </li>
           </ul>

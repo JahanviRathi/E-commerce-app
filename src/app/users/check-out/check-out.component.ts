@@ -6,7 +6,6 @@ import { OrderService } from 'src/app/order.service';
 import { ShoppingCartService } from 'src/app/shopping-cart.service';
 import { ToastrService } from 'ngx-toastr';
 
-
 @Component({
   selector: 'app-check-out',
   templateUrl: './check-out.component.html',
@@ -21,6 +20,7 @@ export class CheckOutComponent implements OnInit {
   totalQuantity: number;
   order;
   totalQuantityMsg: string;
+  paymentHandler: any = null;
 
   constructor(
     private fireService: FirebaseInstanceService,
@@ -31,6 +31,7 @@ export class CheckOutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.invokeStripe();
     this.shippingForm = new FormGroup({
       Name: new FormControl(null, [
         Validators.required,
@@ -53,17 +54,16 @@ export class CheckOutComponent implements OnInit {
         Validators.pattern('[0-9 ]+'),
       ]),
     });
-  
-    this.fireService.getCurrentUser().subscribe(user => {
-      if(user){
+
+    this.fireService.getCurrentUser().subscribe((user) => {
+      if (user) {
         this.getCartItems(user.uid);
         this.currentUserId = user.uid;
-      }
-      else{
+      } else {
         this.getCartItems(null);
         this.currentUserId = null;
       }
-    })
+    });
   }
 
   getCartItems(currentUserId) {
@@ -106,5 +106,41 @@ export class CheckOutComponent implements OnInit {
     this.shippingForm.reset();
     this.toastr.success('Order Placed Successfully!', 'Success');
     setTimeout(() => this.router.navigate(['/']), 1000);
+  }
+
+  makePayment() {
+    console.log(this.shippingForm.value);
+    const paymentHandler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_51MqWQFSHQEywu6cx6tLmwxp0aiIitmWHkyA1FDlEwr9iwGaz4SheRJ6z05OWP2kf1ILDA8qOoHgUirf2wMZcNI1X00C1LgKdNH',
+      locale: 'auto',
+      token:  (stripeToken: any) => {
+        console.log({ stripeToken });
+        this.toastr.success('Payment Done Successfully!', 'Success');
+        this.placeOrder();
+      },
+    });
+
+    paymentHandler.open({
+    });
+  }
+
+  invokeStripe() {
+    if (!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement('script');
+      script.id = 'stripe-script';
+      script.type = 'text/javascript';
+      script.src = 'https://checkout.stripe.com/checkout.js';
+      script.onload = () => {
+        this.paymentHandler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51MqWQFSHQEywu6cx6tLmwxp0aiIitmWHkyA1FDlEwr9iwGaz4SheRJ6z05OWP2kf1ILDA8qOoHgUirf2wMZcNI1X00C1LgKdNH',
+          locale: 'auto',
+          token: function (stripeToken: any) {
+            console.log({ stripeToken });
+            this.toastr.success('Payment has been successfull!','Success');
+          },
+        });
+      };
+      window.document.body.appendChild(script);
+    }
   }
 }
